@@ -7,12 +7,13 @@ import CountDow from './CountDown';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping, faDownLong, faUpLong, faPhone } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
-
-const domain = "http://127.0.0.1:8000";
+import properties from '../config';
+import { useParams } from 'react-router-dom';
+const domain = properties.domain;
 
 function Home() {
 
-
+  const { slug } = useParams();
   const [quantity,setQuantity] = useState(1)
   const [productInput, setProductInput] = useState({
     "id":"",
@@ -32,6 +33,7 @@ function Home() {
   const [isScrollingUp, setIsScrollingUp] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [prodcut, setProduct] = useState([])
+  const [listProduct, setListProduct] = useState([])
   const handleScroll = () => {
     const currentPosition = window.pageYOffset;
     setIsVisible(currentPosition > 300); // Hiển thị nút khi cuộn trang xuống dưới 300px
@@ -71,23 +73,41 @@ function Home() {
 useEffect(() => {
   const fetchData = async () => {
       try {
-          const response = await axios.get(`${domain}/api/product/mu1`);
+          const response = await axios.get(`${domain}/api/product/${slug}`);
           if (response.data.status){
             setProduct(response.data.data)
-            console.log(response.data)
             setProductInput({
               "id": response.data.data.id ,
               "price":response.data.data.price 
             })
             setEvent(response.data.event[0])
+          }else{
+            window.location.href = properties.mainDomain;
           }
+          
       } catch (error) {
           console.error('Error fetching data:', error);
       }
   };
 
+  const fetchAllData =  async () =>{
+    try {
+      const response = await axios.get(`${domain}/api/products/`);
+      if (response.data.status){
+        setListProduct(response.data.data)
+        
+      }else{
+        window.location.href = properties.mainDomain;
+      }
+      
+  } catch (error) {
+      console.error('Error fetching data:', error);
+  }
+  }
+
   fetchData();
-}, []);
+  fetchAllData();
+}, [slug]);
 
 
 
@@ -102,7 +122,7 @@ useEffect(() => {
       {/* count dow */}
       <CountDow event={event}/>
       {/* mua hang */}
-      <FormBuy prodcut={prodcut} scrollToTop={scrollToTop} domain={domain}  getQuantity_product={getQuantity_product} setQuantity={setQuantity}/>
+      <FormBuy prodcut={prodcut} listProduct={listProduct} scrollToTop={scrollToTop} domain={domain}  getQuantity_product={getQuantity_product} setQuantity={setQuantity}/>
       {/* Nút bấm lên */}
       {isVisible && (
         <>

@@ -2,7 +2,6 @@ import React from 'react'
 import DetailComment from './DetailComment'
 import properties from '../config'
 function Comment(props) {
-    console.log(props.comment)
   return (
     <>
         <div className="py-12 px-4 md:px-6 2xl:px-0 2xl:container 2xl:mx-auto flex justify-center items-center mx-auto ">

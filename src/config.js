@@ -19,7 +19,9 @@ const properties = {
     totalPrice:"Total",
     alert:"Mua hàng thành công",
     currencyunit:"$",
-    numberofcounts:"x"
+    numberofcounts:"x",
+    domain:"http://127.0.0.1:8000",
+    mainDomain : "https://www.youtube.com/?hl=vi"
 }
 
 export default properties

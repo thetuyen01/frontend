@@ -1,9 +1,9 @@
 import React,{useState} from 'react'
 import properties from '../config'
 import axios from 'axios';
+import Carousel from './Carousel';
 
 function FormBuy(props) {
-    console.log(props.prodcut)
     const [data, setData] =useState({
         "fullname":'',
         "phone_number":'',
@@ -100,8 +100,9 @@ function FormBuy(props) {
                     
                 </div>
             </div>
+            
         </div>
-       
+        <Carousel listProduct={props.listProduct} domain={props.domain}/>
     </>
   )
 }

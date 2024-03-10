@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
 const CountDown = (props) => {
-    console.log(props.event.color_event)
     const calculateTimeLeft = () => {
         const difference = new Date(props.event.end_date) - new Date();
         let timeLeft = {};
