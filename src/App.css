@@ -1,38 +1,137 @@
-.App {
-  text-align: center;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+@-webkit-keyframes scale-phone {
   from {
-    transform: rotate(0deg);
+    transform: scale(1, 1);
+    border: 5px rgba(41, 128, 185, 0.67) solid;
   }
   to {
-    transform: rotate(360deg);
+    transform: scale(1.2,1.2);
+    border: 5px rgba(41, 128, 185, 0) solid;
   }
 }
+@keyframes scale-phone {
+  from {
+    transform: scale(1, 1);
+    border: 5px rgba(41, 128, 185, 0.67) solid;
+  }
+  to {
+    transform: scale(1.2, 1.2);
+    border: 5px rgba(41, 128, 185, 0) solid;
+  }
+}
+@-webkit-keyframes phone-ring {
+  0% {
+    transform: rotate(0deg) scale(1) skew(1deg);
+  }
+  10% {
+    transform: rotate(-25deg) scale(1) skew(1deg);
+  }
+  20% {
+    transform: rotate(25deg) scale(1) skew(1deg);
+  }
+  30% {
+    transform: rotate(-25deg) scale(1) skew(1deg);
+  }
+  40% {
+    transform: rotate(25deg) scale(1) skew(1deg);
+  }
+  50% {
+    transform: rotate(0deg) scale(1) skew(1deg);
+  }
+  100% {
+    transform: rotate(0deg) scale(1) skew(1deg);
+  }
+}
+@keyframes phone-ring {
+  0% {
+    transform: rotate(0deg) scale(1) skew(1deg);
+  }
+  10% {
+    transform: rotate(-25deg) scale(1) skew(1deg);
+  }
+  20% {
+    transform: rotate(25deg) scale(1) skew(1deg);
+  }
+  30% {
+    transform: rotate(-25deg) scale(1) skew(1deg);
+  }
+  40% {
+    transform: rotate(25deg) scale(1) skew(1deg);
+  }
+  50% {
+    transform: rotate(0deg) scale(1) skew(1deg);
+  }
+  100% {
+    transform: rotate(0deg) scale(1) skew(1deg);
+  }
+}
+
+.phone-link {
+    position: fixed;
+    bottom: 20px; /* Thay đổi giá trị tùy ý để điều chỉnh vị trí theo yêu cầu */
+    right: 20px; /* Thay đổi giá trị tùy ý để điều chỉnh vị trí theo yêu cầu */
+    background-color: #0794f3;
+    padding: 10px;
+    padding: 10px 20px; /* Kích thước của nút */
+    border: 1px solid #176ed1;
+    border-radius: 50%;
+    text-decoration: none;
+    color: #fff;
+    animation: scale-phone 1.5s infinite;
+    -webkit-animation: phone-ring 1.5s infinite;
+    box-shadow: 3px 3px 3px 3px #50b5f0;
+}
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 100px; /* Thay đổi giá trị tùy ý để điều chỉnh vị trí theo yêu cầu */
+    right: 20px; /* Thay đổi giá trị tùy ý để điều chỉnh vị trí theo yêu cầu */
+    background-color: #007bff; /* Màu nền của nút */
+    color: #fff; /* Màu chữ của nút */
+    padding: 10px 20px; /* Kích thước của nút */
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2; /* Đảm bảo nút bấm lên hiển thị phía trên đường liên kết */
+    transition: bottom 0.3s ease;
+}
+.scroll-to-bottom {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .scroll-to-bottom:hover {
+    background-color: #17228a;
+  }
+  
+  .cart {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    background-color: #e94909;
+    color: #fff;
+    padding: 10px 20px;
+    box-shadow: 3px 3px 3px 3px #f58b5a;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1;
+    animation: scale-phone 1.5s infinite;
+    -webkit-animation: phone-ring 1.5s infinite;
+  }
+  
+  .cart:hover {
+    background-color: #005cb3;
+  }
+  
